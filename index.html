@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trip Memo｜旅途手帳</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <p class="site-subtitle">Personal Travel Notebook</p>
+      <h1 class="site-title">☕ Trip Memo 旅途手帳</h1>
+      <p class="site-desc">收藏台灣海風與老街的溫度，也記錄走向世界盡頭與繁華都市的風景。一頁一趟旅程，慢慢寫下走過的路。</p>
+    </header>
+
+    <nav class="filter-bar" aria-label="旅遊地區篩選">
+      <button class="filter-btn active" data-filter="all">全部旅程 (4)</button>
+      <button class="filter-btn" data-filter="taiwan">台灣國內 (2)</button>
+      <button class="filter-btn" data-filter="overseas">國外旅遊 (2)</button>
+    </nav>
+
+    <main class="trip-grid">
+      <!-- 卡片 1：台灣綠島 -->
+      <article class="trip-card" data-category="taiwan">
+        <div class="card-tape"></div>
+        <div class="card-meta">
+          <span class="badge badge-tw">台灣國內</span>
+          <span class="trip-date">台東・綠島</span>
+        </div>
+        <h2 class="card-title"><a href="trips/tw-green-island.html">綠島｜太平洋上的湛藍與朝日溫泉</a></h2>
+        <p class="card-excerpt">騎著機車沿著環島公路吹海風，潛入玻璃般清澈的海底世界，凌晨在世界級海底溫泉等待第一道日出。</p>
+        <div class="card-tags">
+          <span>#離島跳島</span>
+          <span>#浮潛看海龜</span>
+          <span>#朝日溫泉</span>
+        </div>
+        <a href="trips/tw-green-island.html" class="read-more">翻開手帳閱讀 →</a>
+      </article>
+
+      <!-- 卡片 2：台灣台南 -->
+      <article class="trip-card" data-category="taiwan">
+        <div class="card-tape"></div>
+        <div class="card-meta">
+          <span class="badge badge-tw">台灣國內</span>
+          <span class="trip-date">台南・中西區＆安平</span>
+        </div>
+        <h2 class="card-title"><a href="trips/tw-tainan.html">台南｜鑽進紅磚老巷弄的慢食散步</a></h2>
+        <p class="card-excerpt">從清晨一碗溫熱牛肉湯開始，穿梭在神農街與老屋咖啡館之間，感受台南獨有的悠閒生活節奏。</p>
+        <div class="card-tags">
+          <span>#老屋咖啡</span>
+          <span>#府城美食</span>
+          <span>#慢活散步</span>
+        </div>
+        <a href="trips/tw-tainan.html" class="read-more">翻開手帳閱讀 →</a>
+      </article>
+
+      <!-- 卡片 3：國外蒙古 -->
+      <article class="trip-card" data-category="overseas">
+        <div class="card-tape"></div>
+        <div class="card-meta">
+          <span class="badge badge-intl">國外旅遊</span>
+          <span class="trip-date">蒙古國・特勒吉國家公園</span>
+        </div>
+        <h2 class="card-title"><a href="trips/intl-mongolia.html">蒙古｜無邊際草原、蒙古包與銀河星空</a></h2>
+        <p class="card-excerpt">離開沒有訊號的城市，在遼闊草原上策馬奔馳，夜晚抬頭便是毫無光害的滿天星斗與銀河。</p>
+        <div class="card-tags">
+          <span>#草原騎馬</span>
+          <span>#蒙古包住宿</span>
+          <span>#銀河星空</span>
+        </div>
+        <a href="trips/intl-mongolia.html" class="read-more">翻開手帳閱讀 →</a>
+      </article>
+
+      <!-- 卡片 4：國外新加坡 -->
+      <article class="trip-card" data-category="overseas">
+        <div class="card-tape"></div>
+        <div class="card-meta">
+          <span class="badge badge-intl">國外旅遊</span>
+          <span class="trip-date">新加坡・濱海灣＆牛車水</span>
+        </div>
+        <h2 class="card-title"><a href="trips/intl-singapore.html">新加坡｜花園城市的未來建築與南洋風味</a></h2>
+        <p class="card-excerpt">漫步在濱海灣花園的超級樹下，白天走訪色彩繽紛的娘惹老街，晚上品嚐道地海南雞飯與叻沙。</p>
+        <div class="card-tags">
+          <span>#花園城市</span>
+          <span>#南洋美食</span>
+          <span>#城市探索</span>
+        </div>
+        <a href="trips/intl-singapore.html" class="read-more">翻開手帳閱讀 →</a>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Trip Memo 旅途手帳｜Built with AGENTS.md & Structured Workflow</p>
+    </footer>
+  </div>
+
+  <script>
+    // 首頁分類篩選功能
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.trip-card');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
